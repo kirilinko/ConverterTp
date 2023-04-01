@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="cssfile.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+	<title>Convertisseur multi-mesure</title>
+</head>
+<body class="bb-font">
+   <div class="container mb-4">
+  	  <div class="mt-4">
+  	     Traveaux diriger IHM > Groupe 6
+      </div>
+    <div class="mt-4 mb-4">
+    	 <h2>Convertisser <br/> Dans plusieurs <span id="TextConverte">devises</span> </h2>
+    </div>
+    
+    <div class="row mt-4">
+    	<div class="col-6">		
+    	</div>
+    	<div class="col-6 mb-2">
+    		<div class="row">
+    			<div class="col-md-6">
+    				<span >Choix du convertisseur</span>
+    			</div>
+    			<div class="col-md-6">
+    				<select class="form-control" id="Converter">
+    					<option value="Devise">Devise (Euro, Dollar, Fcfa)</option>
+    					<option value="Mesure">Mesure (m, cm, km)</option>
+    					<option value="Codage">Codage (Dec, Bin, hex)</option>
+    				</select>
+    			</div>
+    		</div> 
+    	</div>
+    </div>
+                                     <!--===== Convertisseur de Mesure ====!-->
+    <div class="card mt-4 box-converter" id="Mesure">
+       <div class="card-body" >
+            <div class="form-row">
+           	    <div class="col-md-6">
+                         <div class="form-row">
+                             <div class="form-group col-md-6">
+                                  <label for="FieldMesure">Entrer une valeur</label>
+                                  <input type="text" class="form-control" id="FieldMesure">
+                             </div>
+                             <div class="form-group col-md-4">
+                                  <label for="InputMesure"> Unité</label>
+                                  <select id="InputMesure" class="form-control">
+                                     <option selected value="m">m</option>
+                                     <option value="cm">cm</option>
+                                     <option value="km">km</option>
+                                  </select>
+                             </div>
+                         </div>
+                </div>
+           	         	
+           	    <div class="col-md-6">
+           	    	    <div class="form-row">
+                            <div class="form-group col-md-6">
+                               <label for="ShowresultMesure">Résultat convertion</label>
+                               <input type="text" class="form-control" id="ShowresultMesure"  disabled />
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="OutputMesure">Unité</label>
+                                <select id="OutputMesure" class="form-control">
+                                   <option  value="m">m</option>
+                                   <option selected value="cm">cm</option>
+                                   <option value="km">km</option>
+                                </select>
+                            </div>
+                        </div>	
+           	    </div>
+            </div>
+            <center>
+            	<button type="button" id="ResetMesure" class="btn btn-danger mt-2"> <i class="fa fa-repeat" aria-hidden="true"></i> Mettre le convertisseur à zéro</button>
+            </center>
+        </div>
+    </div>
+                                     <!--===== Convertisseur de devise ====!-->
+<div class="card mt-4 box-converter" id="Devise">
+       <div class="card-body" >
+            <div class="form-row">
+           	    <div class="col-md-6">
+                         <div class="form-row">
+                             <div class="form-group col-md-6">
+                                  <label for="FieldDevise"> <i class="fa fa-money" aria-hidden="true"></i> Entrer un montant</label>
+                                  <input type="text" class="form-control" id="FieldDevise">
+                             </div>
+                             <div class="form-group col-md-4">
+                                  <label for="InputDevise">Devise</label>
+                                  <select id="InputDevise" class="form-control">
+                                     <option selected value="Euro">Euro</option>
+                                     <option value="Dollar">Dollar</option>
+                                     <option  value="Fcfa">Fcfa</option>
+                                  </select>
+                             </div>
+
+                         </div>
+                </div>
+           	
+           	    <div class="col-md-6">
+           	    	    <div class="form-row">
+                            <div class="form-group col-md-6">
+                               <label for="ShowresultDevise">Résultat convertion</label>
+                               <input type="text" class="form-control" id="ShowresultDevise" disabled />
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="OutputDevise">Devise</label>
+                                <select id="OutputDevise" class="form-control">
+                                   <option  value="Euro">Euro</option>
+                                   <option value="Dollar">Dollar</option>
+                                   <option selected value="Fcfa">Fcfa</option>
+                                </select>
+                            </div>
+                        </div>	
+           	    </div>
+            </div>
+            <center>
+            	<button type="button" id="ResetDevise" class="btn btn-danger mt-2"> <i class="fa fa-repeat" aria-hidden="true"></i> Mettre le convertisseur à zéro</button>
+            </center>
+        </div>
+    </div>
+                                    <!--===== Convertisseur de Codage ====!-->
+
+<div class="card mt-4 box-converter" id="Codage">
+       <div class="card-body" >
+            <div class="form-row">
+           	    <div class="col-md-6">
+                         <div class="form-row">
+                             <div class="form-group col-md-6">
+                                  <label for="FieldCodage">Entrer une valeur</label>
+                                  <input type="text" class="form-control" id="FieldCodage">
+                             </div>
+                             <div class="form-group col-md-4">
+                                  <label for="InputCodage">Unité</label>
+                                  <select id="InputCodage" class="form-control">
+                                     <option  value="Bin">Binaire</option>
+                                     <option value="Hex">Hexadécimal</option>
+                                     <option selected value="Dec">Décimal</option>
+                                  </select>
+                             </div>
+                         </div>
+                </div>
+           	         	
+           	    <div class="col-md-6">
+           	    	    <div class="form-row">
+                            <div class="form-group col-md-6">
+                               <label for="ShowresultCodage">Résultat convertion</label>
+                               <input type="text" class="form-control" id="ShowresultCodage" disabled />
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="OutputCodage">Unité</label>
+                                <select id="OutputCodage" class="form-control">
+                                   <option selected value="Bin">Binaire</option>
+                                   <option value="Hex">Hexadécimal</option>
+                                   <option value="Dec">Décimal</option>
+                                </select>
+                            </div>
+                        </div>	
+           	    </div>
+            </div>
+            <center>
+            	<button type="button" id="ResetCodage" class="btn btn-danger mt-2"> <i class="fa fa-repeat" aria-hidden="true"></i> Mettre le convertisseur à zéro</button>
+            </center>
+        </div>
+    </div>
+  </div>
+</body>
+<footer class="space-footer">
+	<center class ="">
+		<span class="font-weight-bold">Tous droit reserver © Groupe 6 </span>| MASTER 1 IFRI 2022-2023
+	</center>
+</footer>
+</html>
+
+<script type="text/javascript" src="utilCodage.js"></script>
+<script type="text/javascript">
+
+	Mesure=document.getElementById('Mesure');
+	Codage=document.getElementById('Codage');
+	Devise=document.getElementById('Devise');
+ 
+	ResetCodage=document.getElementById('ResetCodage');
+	ResetMesure=document.getElementById('ResetMesure');
+	ResetDevise=document.getElementById('ResetDevise');
+
+	Converter=document.getElementById('Converter');
+    
+    Mesure.style.display="none";
+	Codage.style.display="none";
+
+	 Converter.addEventListener('change', (event)=>{
+	 	let converterState=event.target.value;
+	 	console.log(converterState)
+        switch (converterState) {
+           case 'Mesure':
+               Devise.style.display="none";
+	           Codage.style.display="none";
+	           Mesure.style.display="block";
+	           document.getElementById('TextConverte').innerHTML="mesures"
+               break;
+           case 'Codage':
+           	   Devise.style.display="none";
+	           Mesure.style.display="none";
+	           Codage.style.display="block";
+	           document.getElementById('TextConverte').innerHTML="bases"
+               break;
+           case 'Devise':
+           	   Mesure.style.display="none";
+	           Codage.style.display="none";
+	           Devise.style.display="block";
+	           document.getElementById('TextConverte').innerHTML="devises"
+               break;
+           default:
+               Mesure.style.display="none";
+	           Codage.style.display="none";
+	           Devise.style.display="none";
+ }
+	 })
+
+
+
+   //========= Devise converter
+	 let InputDevise,FieldDevise,OutputDevise, ShowresultDevise, DeviseResult;
+	 FieldDevise=document.getElementById('FieldDevise');
+     InputDevise=document.getElementById('InputDevise');
+     OutputDevise=document.getElementById('OutputDevise');
+     ShowresultDevise=document.getElementById('ShowresultDevise');
+	 
+	 FieldDevise.addEventListener('keyup', (event)=>{
+         DeviseResult=DeviseConverter(FieldDevise.value, InputDevise.value, OutputDevise.value)
+         ShowresultDevise.value=DeviseResult
+         console.log(DeviseResult)
+	 })
+
+     ElementsDevise=[InputDevise, OutputDevise]
+     ElementsDevise.forEach((element)=>{
+     element.addEventListener('change',(event)=>{
+         DeviseResult=DeviseConverter(FieldDevise.value, InputDevise.value, OutputDevise.value)
+         ShowresultDevise.value=DeviseResult
+         console.log(DeviseResult)
+       })
+     })
+
+     ResetDevise.addEventListener('click', (event)=>{
+	 	FieldDevise.value="" 
+        ShowresultDevise.value="" 
+	 })
+
+     //============= Mesure converter
+	 let InputMesure,FieldMesure,OutputMesure, ShowresultMesure, MesureResult
+	 FieldMesure=document.getElementById('FieldMesure');
+     InputMesure=document.getElementById('InputMesure');
+     OutputMesure=document.getElementById('OutputMesure');
+     ShowresultMesure=document.getElementById('ShowresultMesure');
+	 
+	 FieldMesure.addEventListener('keyup', (event)=>{
+         MesureResult=MesureConverter(FieldMesure.value, InputMesure.value, OutputMesure.value)
+         ShowresultMesure.value=MesureResult
+         console.log(MesureResult)
+	 })
+	 
+     ElementsDevise=[InputMesure, OutputMesure]
+     ElementsDevise.forEach((element)=>{
+     element.addEventListener('change',(event)=>{
+         MesureResult=MesureConverter(FieldMesure.value, InputMesure.value, OutputMesure.value)
+         ShowresultMesure.value=MesureResult
+         console.log(MesureResult)
+       })
+     })
+
+     ResetMesure.addEventListener('click', (event)=>{
+        FieldMesure.value="" 
+        ShowresultMesure.value=""
+	 })
+
+	 
+	  //=============== Codage converter
+    
+    let InputCodage,FieldCodage,OutputCodage, ShowresultCodage, CodageResult
+	 FieldCodage=document.getElementById('FieldCodage');
+     InputCodage=document.getElementById('InputCodage');
+     OutputCodage=document.getElementById('OutputCodage');
+     ShowresultCodage=document.getElementById('ShowresultCodage');
+	 
+	 FieldCodage.addEventListener('keyup', (event)=>{
+         CodageResult=CodageConverter(FieldCodage.value, InputCodage.value, OutputCodage.value)
+         ShowresultCodage.value=CodageResult
+         console.log(CodageResult)
+	 })
+	 
+     ElementsDevise=[InputCodage, OutputCodage]
+     ElementsDevise.forEach((element)=>{
+     element.addEventListener('change',(event)=>{
+         CodageResult=CodageConverter(FieldCodage.value, InputCodage.value, OutputCodage.value)
+         ShowresultCodage.value=CodageResult
+         console.log(CodageResult)
+       })
+     })    
+     
+     ResetCodage.addEventListener('click', (event)=>{
+        FieldCodage.value="" 
+        ShowresultCodage.value="" 
+	 })
+
+   function DeviseConverter(amount, input, output) {
+         return AllDevises[input][output]*amount
+   }
+
+    function MesureConverter(mesure, input, output) {
+         return AllMesures[input][output]*mesure
+   }
+
+   function CodageConverter(codage, input, output) {
+       let result
+
+        if(input=="Bin"){
+           if(output=="Dec"){
+              result=BinToDec(codage);
+           }
+           else if (output=="Hex") {
+              result=BinToHex(codage);
+           }
+           else{ result=Selfsame(codage); }
+        }
+
+        if(input=="Dec"){
+           if(output=="Bin"){
+              result=DecToBin(codage);
+           }
+           else if (output=="Hex") {
+              result=DecToHex(codage);
+           }
+           else{ result=Selfsame(codage); }
+        }
+        
+
+        if(input=="Hex"){
+           if(output=="Dec"){
+              result=HexToDec(codage)
+           }
+           else if (output=="Bin") {
+              result=HexToBin(codage)
+           }
+           else{ result=Selfsame(codage) }
+        }
+
+        return result
+
+   }
+
+</script>
